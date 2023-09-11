@@ -11,9 +11,9 @@ consumer = KafkaConsumer(bootstrap_servers=settings.KAFKA_BOOTSTRAP_SERVER, valu
 consumer.subscribe([settings.KAFKA_NER_TOPIC, settings.KAFKA_KEYWORDS_TOPIC])
 
 
-def write_to_redis_table(self, table, timestamp, data):
+def write_to_redis_table(table, timestamp, data):
     data = {k: " ".join(v) for k, v in data.items()}
-    r.hset(f"{table}:{timestamp}", data)
+    r.hmset(f"{table}:{timestamp}", data)
 
 def consume():
     while True:
