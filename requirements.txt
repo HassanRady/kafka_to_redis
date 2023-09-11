@@ -1,0 +1,3 @@
+redis
+kakfa-python
+pydantic-settings
